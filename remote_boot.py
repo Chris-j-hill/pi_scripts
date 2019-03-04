@@ -21,7 +21,7 @@ GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Button pin set as input 
 
 GPIO.add_event_detect(button, GPIO.FALLING, callback=my_callback)  # add rising edge detection on a channel
 
-while(1)	
+while(1):	
 	time.sleep(1)
 	
 """while(1):
