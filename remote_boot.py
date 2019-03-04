@@ -2,9 +2,11 @@ import RPi.GPIO as GPIO
 import time
 
 def my_callback(button):
-    print('This is a edge event callback function!')
-    print('Edge detected on channel %s'%button)
-    print('This is run in a different thread to your main program')
+	time.sleep(0.2)	#edge detector
+	if GPIO.input(button) == False:
+		GPIO.output(relay_pin, GPIO.HIGH)
+		time.sleep(hold_time)
+		GPIO.output(relay_pin, GPIO.LOW)
 
 
 
