@@ -4,8 +4,8 @@ import time
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
 
-relay_pin = 22
-button = 4
+relay_pin = 4
+button = 17
 hold_time = 1
 
 GPIO.setup(relay_pin, GPIO.OUT) # LED pin set as output
