@@ -1,6 +1,13 @@
 import RPi.GPIO as GPIO
 import time
 
+def my_callback(button):
+    print('This is a edge event callback function!')
+    print('Edge detected on channel %s'%button)
+    print('This is run in a different thread to your main program')
+
+
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
 
@@ -12,13 +19,18 @@ GPIO.setup(relay_pin, GPIO.OUT) # LED pin set as output
 
 GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Button pin set as input w/ pull-up
 
-while(1):
+GPIO.add_event_detect(button, GPIO.FALLING, callback=my_callback)  # add rising edge detection on a channel
+
+while(1)	
+	time.sleep(1)
+	
+"""while(1):
 	if GPIO.input(button) == False :
-		sleep(0.3)
+		time.sleep(0.3)
 		if GPIO.input(button) == False:
 			GPIO.output(relay_pin, GPIO.HIGH)
 			time.sleep(hold_time)
 			GPIO.output(relay_pin, GPIO.LOW)
 		
-
+"""
 GPIO.cleanup() 
