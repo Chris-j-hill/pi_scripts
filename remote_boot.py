@@ -14,9 +14,11 @@ GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Button pin set as input 
 
 while(1):
 	if GPIO.input(button) == False :
-		GPIO.output(relay_pin, GPIO.HIGH)
-		time.sleep(hold_time)
-		GPIO.output(relay_pin, GPIO.LOW)
-	
+		sleep(0.3)
+		if GPIO.input(button) == False:
+			GPIO.output(relay_pin, GPIO.HIGH)
+			time.sleep(hold_time)
+			GPIO.output(relay_pin, GPIO.LOW)
+		
 
 GPIO.cleanup() 
