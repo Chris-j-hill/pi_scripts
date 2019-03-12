@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 def my_callback(button):
-	time.sleep(0.2)	#edge detector
+	time.sleep(0.1)	#edge detector
 	if GPIO.input(button) == False:
 		GPIO.output(relay_pin, GPIO.HIGH)
 		time.sleep(hold_time)
